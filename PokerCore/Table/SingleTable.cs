@@ -1,22 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
+using PokerCore.Beting;
 using PokerCore.DeckOfCards;
 using PokerCore.Players;
+using PokerCore.Players.PositionOnTable;
 
-namespace PokerCore
+namespace PokerCore.Table
 {
-    public class Table
+    public class SingleTable
     {
         public List<Player> Players;
-        public CardsOnTable Cards;
-        public Table()
+        public CardsOnTable TableCards;
+        public SingleTable()
         {
             Players = new List<Player>();
-            Cards = new CardsOnTable();
+            TableCards = new CardsOnTable();
+        }
+
+
+        public void DealStartChips(int startChips)
+        {
+            Players.ForEach(player => player.SetStartChips(new Chips(startChips)));
         }
 
         public void AddPlayer(Player player)
@@ -26,17 +30,17 @@ namespace PokerCore
 
         public void PutFlopOnTable(List<Card> flopCards)
         {
-            Cards.FlopCards = flopCards;
+            TableCards.FlopCards = flopCards;
         }
 
         public void PutTurnOnTable(List<Card> turnCards)
         {
-            Cards.TurnCards = turnCards;
+            TableCards.TurnCards = turnCards;
         }
 
         public void PutRiverOnTable(List<Card> riverCards)
         {
-            Cards.RiverCards = riverCards;
+            TableCards.RiverCards = riverCards;
         }
     }
 }

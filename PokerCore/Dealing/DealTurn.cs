@@ -4,23 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PokerCore.DeckOfCards;
+using PokerCore.Table;
 
 namespace PokerCore.Dealing
 {
-    public class DealTurn
+    public class DealTurn : IDeal
     {
-        private Table _table;
+        private SingleTable _singleTable;
         private Deck _deck;
-        public DealTurn(Table table, Deck deck)
+        public DealTurn(SingleTable singleTable, Deck deck)
         {
-            _table = table;
+            _singleTable = singleTable;
             _deck = deck;
         }
 
         public void Deal()
         {
             var flopCards = GetTurnCardsFromDeck();
-            _table.PutTurnOnTable(flopCards);
+            _singleTable.PutTurnOnTable(flopCards);
         }
 
         private List<Card> GetTurnCardsFromDeck()

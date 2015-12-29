@@ -8,6 +8,7 @@ using PokerCore;
 using PokerCore.Dealing;
 using PokerCore.DeckOfCards;
 using PokerCore.Players;
+using PokerCore.Table;
 
 namespace PokerCoreTest
 {
@@ -36,7 +37,7 @@ namespace PokerCoreTest
         [TestMethod]
         public void PutCardsOnTable()
         {
-            var table = new Table();
+            var table = new SingleTable();
             var deck = new Deck();
             deck.Shuffle();
             var dealFlop = new DealFlop(table, deck);
@@ -46,7 +47,7 @@ namespace PokerCoreTest
             var dealRiver = new DealRiver(table, deck);
             dealRiver.Deal();
 
-            var allCardsOnTable = table.Cards.AllCards();
+            var allCardsOnTable = table.TableCards.AllCards();
             Assert.AreEqual(5, allCardsOnTable.Count);
             CollectionAssert.AllItemsAreUnique(allCardsOnTable);
         }

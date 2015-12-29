@@ -4,24 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PokerCore.DeckOfCards;
+using PokerCore.Table;
 
 namespace PokerCore.Dealing
 {
-    public class DealRiver
+    public class DealRiver :IDeal
     {
-        private Table _table;
+        private SingleTable _singleTable;
         private Deck _deck;
 
-        public DealRiver(Table table, Deck deck)
+        public DealRiver(SingleTable singleTable, Deck deck)
         {
-            _table = table;
+            _singleTable = singleTable;
             _deck = deck;
         }
 
         public void Deal()
         {
             var flopCards = GetRiverCardsFromDeck();
-            _table.PutRiverOnTable(flopCards);
+            _singleTable.PutRiverOnTable(flopCards);
         }
 
         private List<Card> GetRiverCardsFromDeck()

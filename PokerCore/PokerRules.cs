@@ -13,5 +13,6 @@ namespace PokerCore
         public static readonly int TurnCards = 1;
         public static readonly int RiverCards = 1;
         public static readonly int CardsToCreateHand = 5;
+        public static readonly int StartChips = 3000;
     }
 }

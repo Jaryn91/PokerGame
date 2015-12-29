@@ -22,17 +22,7 @@ namespace PokerCore.DeckOfCards
 
         public void Shuffle()
         {
-            var rng = new Random();
-
-            int n = Cards.Count;
-            while (n > 1)
-            {
-                n--;
-                int k = rng.Next(n + 1);
-                var card = Cards[k];
-                Cards[k] = Cards[n];
-                Cards[n] = card;
-            }
+            Cards.Shuffle();    
         }
 
         public Card TakeCard()

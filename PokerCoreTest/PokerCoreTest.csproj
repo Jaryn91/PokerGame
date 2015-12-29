@@ -55,6 +55,7 @@
     <Compile Include="DeckTest.cs" />
     <Compile Include="HandRankingTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SingleTableTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PokerCore\PokerCore.csproj">

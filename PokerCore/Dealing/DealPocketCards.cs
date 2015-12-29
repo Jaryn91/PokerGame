@@ -7,10 +7,10 @@ using PokerCore.DeckOfCards;
 using PokerCore.Players;
 namespace PokerCore.Dealing
 {
-    public class DealPocketCards
+    public class DealPocketCards : IDeal
     {
         private List<Player> _players;
-        private Deck _deck; 
+        private Deck _deck;
         public DealPocketCards(List<Player> players, Deck deck)
         {
             _players = players;

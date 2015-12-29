@@ -40,7 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CardsOnTable.cs" />
+    <Compile Include="Beting\Blinds.cs" />
+    <Compile Include="Beting\Chips.cs" />
+    <Compile Include="Dealing\IDeal.cs" />
+    <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="Players\PositionOnTable\PlayersPosition.cs" />
+    <Compile Include="Table\CardsOnTable.cs" />
     <Compile Include="Dealing\DealFlop.cs" />
     <Compile Include="Dealing\DealPocketCards.cs" />
     <Compile Include="Dealing\DealRiver.cs" />
@@ -66,7 +71,10 @@
     <Compile Include="Players\Player.cs" />
     <Compile Include="PokerRules.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Table.cs" />
+    <Compile Include="SingleGame.cs" />
+    <Compile Include="Players\PositionOnTable\PlayerPosition.cs" />
+    <Compile Include="Players\PositionOnTable\Position.cs" />
+    <Compile Include="Table\SingleTable.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

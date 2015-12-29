@@ -4,24 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PokerCore.DeckOfCards;
+using PokerCore.Table;
 
 namespace PokerCore.Dealing
 {
-    public class DealFlop
+    public class DealFlop : IDeal
     {
         private Deck _deck;
-        private Table _table;
+        private SingleTable _singleTable;
 
-        public DealFlop(Table table, Deck deck)
+        public DealFlop(SingleTable singleTable, Deck deck)
         {
-            _table = table;
+            _singleTable = singleTable;
             _deck = deck;
         }
 
         public void Deal()
         {
             var flopCards = GetFlopCardsFromDeck();
-            _table.PutFlopOnTable(flopCards);
+            _singleTable.PutFlopOnTable(flopCards);
         }
 
         private List<Card> GetFlopCardsFromDeck()
@@ -35,4 +36,5 @@ namespace PokerCore.Dealing
             return flopCards;
         }
     }
+
 }
