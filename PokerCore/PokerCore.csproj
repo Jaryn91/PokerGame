@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Beting\Blinds.cs" />
     <Compile Include="Beting\Chips.cs" />
+    <Compile Include="Beting\StartChips.cs" />
     <Compile Include="Dealing\IDeal.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Players\PositionOnTable\PlayersPosition.cs" />

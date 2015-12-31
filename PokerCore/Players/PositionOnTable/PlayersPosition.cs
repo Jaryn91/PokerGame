@@ -10,14 +10,13 @@ namespace PokerCore.Players.PositionOnTable
     {
 
         public void SetStartPlayersPositions(List<Player> players)
-        {
-            RandomPositionPlayers(players);
+        {           
             var dealerPlayer = players.ElementAt(0);
             dealerPlayer.Position = Position.Dealer;
             SetBlinds(players, dealerPlayer);
         }
 
-        private void RandomPositionPlayers(List<Player> players)
+        public void RandomPositionPlayers(List<Player> players)
         {
             players.Shuffle();
         }
