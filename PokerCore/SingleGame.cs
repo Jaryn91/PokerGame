@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PokerCore.Beting;
+using PokerCore.Beting.Blind;
 using PokerCore.DeckOfCards;
 using PokerCore.Players;
 using PokerCore.Table;

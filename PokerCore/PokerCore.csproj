@@ -40,8 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Beting\Blinds.cs" />
+    <Compile Include="Beting\Blind\AnteLevel.cs" />
+    <Compile Include="Beting\Blind\BigBlindsLevel.cs" />
+    <Compile Include="Beting\Blind\Blinds.cs" />
     <Compile Include="Beting\Chips.cs" />
+    <Compile Include="Beting\Pot.cs" />
+    <Compile Include="Beting\Blind\SmallBlindLevel.cs" />
     <Compile Include="Beting\StartChips.cs" />
     <Compile Include="Dealing\IDeal.cs" />
     <Compile Include="ExtensionMethods.cs" />

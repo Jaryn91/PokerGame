@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Net.NetworkInformation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PokerCore;
 using PokerCore.Beting;
+using PokerCore.Beting.Blind;
 using PokerCore.Players;
 using PokerCore.Players.PositionOnTable;
 using PokerCore.Table;
@@ -34,7 +37,7 @@ namespace PokerCoreTest
             var playerOne = new Player("John");
             var playerTwo = new Player("Mark");
             var playerThree = new Player("Arun");
-            var playerFour = new Player("John");
+            var playerFour = new Player("Mikheal");
             var players = new List<Player>
             {
                 playerOne, playerTwo, playerThree, playerFour
@@ -46,8 +49,8 @@ namespace PokerCoreTest
             playersPosition.MoveDealerButton(players);
 
             var dealer = playersPosition.GetDealer(players);
-            var smallBlind = playersPosition.GetSmallBlind(players);
-            var bigBlind = playersPosition.GetBigBlind(players);
+            var smallBlind = playersPosition.SmallBlindPlayer(players);
+            var bigBlind = playersPosition.BigBlindPlayer(players);
             Assert.AreEqual(playerThree, dealer);
             Assert.AreEqual(playerFour, smallBlind);
             Assert.AreEqual(playerOne, bigBlind);
@@ -91,17 +94,42 @@ namespace PokerCoreTest
             var playerOne = new Player("John");
             var playerTwo = new Player("Mark");
             var playerThree = new Player("Arun");
-            var playerFour = new Player("John");
+            var playerFour = new Player("Miheal");
             var players = new List<Player>
             {
                 playerOne, playerTwo, playerThree, playerFour
             };
 
+            var pot = new Pot();
+            var levelBlinds = 1;
             var playersPosition = new PlayersPosition();
             playersPosition.SetStartPlayersPositions(players);
+            var startChips = new StartChips();
+            startChips.SetToPlayers(players);
+            var smallBlindLevel = new SmallBlindLevel();
+            var bigBlindLevel = new BigBlindsLevel();
+            var anteLevel = new AnteLevel();
+            
 
-            B
+            var getBlinds = new Blinds(players, levelBlinds, pot, smallBlindLevel, bigBlindLevel, anteLevel);
+            getBlinds.GetBlinds();
 
+            var expectedPot = smallBlindLevel.GetValueFromLevel(levelBlinds) +
+                              bigBlindLevel.GetValueFromLevel(levelBlinds);
+
+            Assert.AreEqual(pot.Amount, expectedPot);
+
+            var expectedSmallBlindAmout = PokerRules.StartChips - smallBlindLevel.GetValueFromLevel(levelBlinds);
+            var smallBlindPlayer = playersPosition.SmallBlindPlayer(players);
+            Assert.AreEqual(smallBlindPlayer.Chips.Amount, expectedSmallBlindAmout);
+
+            var expectedBigBlindAmout = PokerRules.StartChips - bigBlindLevel.GetValueFromLevel(levelBlinds);
+            var bigBlindPlayer = playersPosition.BigBlindPlayer(players);
+            Assert.AreEqual(bigBlindPlayer.Chips.Amount, expectedBigBlindAmout);
+
+            var otherPlayers = players.Where(p => p != smallBlindPlayer && 
+                               p != bigBlindPlayer).ToList();
+            Assert.IsTrue(otherPlayers.TrueForAll(p => p.Chips.Amount == PokerRules.StartChips));         
         }
 
     }

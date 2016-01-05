@@ -17,12 +17,6 @@ namespace PokerCore.Table
             TableCards = new CardsOnTable();
         }
 
-
-        public void DealStartChips(int startChips)
-        {
-            Players.ForEach(player => player.SetStartChips(new Chips(startChips)));
-        }
-
         public void AddPlayer(Player player)
         {
             Players.Add(player);

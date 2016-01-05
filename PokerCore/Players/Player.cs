@@ -11,11 +11,12 @@ namespace PokerCore.Players
         public List<Card> PocketCards { get; private set; } 
         public Chips Chips { get; private set; }
 
-        public Position Position;
+        public Position Position { get; set; }
         public Player(string name)
         {
             Name = name;
             PocketCards = new List<Card>();
+            Position = Position.None;
         }
 
         public void SetStartChips(Chips chips)
@@ -33,5 +34,20 @@ namespace PokerCore.Players
         {
             PocketCards.Add(card);
         }
+
+        public void PaySmallBlind(int amountOfChips, Pot pot)
+        {
+            Chips.SmallBlindIntoPot(amountOfChips, pot);
+        }
+
+        public void PayBigBlind(int amountOfChips, Pot pot)
+        {
+            Chips.BigBlindIntoPot(amountOfChips, pot);
+        }
+        public void PayAnte(int amountOfChips, Pot pot)
+        {
+            Chips.AnteIntoPot(amountOfChips, pot);
+        }
+
     }
 }

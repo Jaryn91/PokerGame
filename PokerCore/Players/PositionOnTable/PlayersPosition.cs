@@ -13,7 +13,7 @@ namespace PokerCore.Players.PositionOnTable
         {           
             var dealerPlayer = players.ElementAt(0);
             dealerPlayer.Position = Position.Dealer;
-            SetBlinds(players, dealerPlayer);
+            SetBlindsPosition(players, dealerPlayer);
         }
 
         public void RandomPositionPlayers(List<Player> players)
@@ -27,10 +27,10 @@ namespace PokerCore.Players.PositionOnTable
             dealerPlayer.Position = Position.None;
             var nextDealerPlayer = players.NextOf(dealerPlayer);
             SetPlayerPosition(nextDealerPlayer, Position.Dealer);
-            SetBlinds(players, nextDealerPlayer);
+            SetBlindsPosition(players, nextDealerPlayer);
         }
 
-        private void SetBlinds(List<Player> players, Player dealerPlayer)
+        private void SetBlindsPosition(List<Player> players, Player dealerPlayer)
         {
             var nextSmallBlidPlayer = players.NextOf(dealerPlayer);
             SetPlayerPosition(nextSmallBlidPlayer, Position.SmallBlind);
@@ -51,12 +51,12 @@ namespace PokerCore.Players.PositionOnTable
             return players.First(player => player.Position == Position.Dealer);
         }
 
-        public Player GetSmallBlind(List<Player> players)
+        public Player SmallBlindPlayer(List<Player> players)
         {
             return players.First(player => player.Position == Position.SmallBlind);
         }
 
-        public Player GetBigBlind(List<Player> players)
+        public Player BigBlindPlayer(List<Player> players)
         {
             return players.First(player => player.Position == Position.BigBlind);
         }

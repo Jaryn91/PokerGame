@@ -25,5 +25,24 @@ namespace PokerCore.Beting
         {
             Amount = +amountOfWin;
         }
+
+
+        public void SmallBlindIntoPot(int amountOfSmallBlind, Pot pot)
+        {
+            Amount -= amountOfSmallBlind;
+            pot.AddSmallBlind(amountOfSmallBlind);
+        }
+
+        public void BigBlindIntoPot(int amountOfBigBlind, Pot pot)
+        {
+            Amount -= amountOfBigBlind;
+            pot.AddBigBlind(amountOfBigBlind);
+        }
+
+        public void AnteIntoPot(int ante, Pot pot)
+        {
+            Amount -= ante;
+            pot.AddAnte(ante);
+        }
     }
 }
