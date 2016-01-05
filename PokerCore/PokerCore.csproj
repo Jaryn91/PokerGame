@@ -40,21 +40,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Beting\Blind\AnteLevel.cs" />
-    <Compile Include="Beting\Blind\BigBlindsLevel.cs" />
+    <Compile Include="Beting\Blind\Ante.cs" />
+    <Compile Include="Beting\Blind\BigBlind.cs" />
     <Compile Include="Beting\Blind\Blinds.cs" />
+    <Compile Include="Beting\Blind\PayBlinds.cs" />
+    <Compile Include="Beting\Blind\Standard\StandardAnte.cs" />
+    <Compile Include="Beting\Blind\Standard\StandardBigBlind.cs" />
+    <Compile Include="Beting\Blind\Standard\StandardSmallBlind.cs" />
     <Compile Include="Beting\Chips.cs" />
     <Compile Include="Beting\Pot.cs" />
-    <Compile Include="Beting\Blind\SmallBlindLevel.cs" />
+    <Compile Include="Beting\Blind\SmallBlind.cs" />
     <Compile Include="Beting\StartChips.cs" />
-    <Compile Include="Dealing\IDeal.cs" />
+    <Compile Include="Dealing\IDealTableCards.cs" />
     <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="Game.cs" />
     <Compile Include="Players\PositionOnTable\PlayersPosition.cs" />
     <Compile Include="Table\CardsOnTable.cs" />
-    <Compile Include="Dealing\DealFlop.cs" />
+    <Compile Include="Dealing\DealTableCardsFlop.cs" />
     <Compile Include="Dealing\DealPocketCards.cs" />
-    <Compile Include="Dealing\DealRiver.cs" />
-    <Compile Include="Dealing\DealTurn.cs" />
+    <Compile Include="Dealing\DealTableCardsRiver.cs" />
+    <Compile Include="Dealing\DealTableCardsTurn.cs" />
     <Compile Include="DeckOfCards\Card.cs" />
     <Compile Include="DeckOfCards\CardSuit.cs" />
     <Compile Include="DeckOfCards\CardFigure.cs" />
@@ -76,10 +81,11 @@
     <Compile Include="Players\Player.cs" />
     <Compile Include="PokerRules.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SingleGame.cs" />
+    <Compile Include="Beting\PreFlopGame.cs" />
+    <Compile Include="Table\TableGame.cs" />
     <Compile Include="Players\PositionOnTable\PlayerPosition.cs" />
     <Compile Include="Players\PositionOnTable\Position.cs" />
-    <Compile Include="Table\SingleTable.cs" />
+    <Compile Include="Table\PlayHandOnTable.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

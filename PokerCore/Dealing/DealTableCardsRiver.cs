@@ -8,27 +8,25 @@ using PokerCore.Table;
 
 namespace PokerCore.Dealing
 {
-    public class DealFlop : IDeal
+    public class DealTableCardsRiver :IDealTableCards
     {
         private Deck _deck;
-        private SingleTable _singleTable;
 
-        public DealFlop(SingleTable singleTable, Deck deck)
+        public DealTableCardsRiver(Deck deck)
         {
-            _singleTable = singleTable;
             _deck = deck;
         }
 
-        public void Deal()
+        public List<Card> Deal()
         {
-            var flopCards = GetFlopCardsFromDeck();
-            _singleTable.PutFlopOnTable(flopCards);
+            var riverCards = GetRiverCardsFromDeck();
+            return riverCards;
         }
 
-        private List<Card> GetFlopCardsFromDeck()
+        private List<Card> GetRiverCardsFromDeck()
         {
             var flopCards = new List<Card>();
-            for (var i = 0; i < PokerRules.FlopCards; i++)
+            for (var i = 0; i < PokerRules.RiverCards; i++)
             {
                 var card = _deck.TakeCard();
                 flopCards.Add(card);
@@ -36,5 +34,4 @@ namespace PokerCore.Dealing
             return flopCards;
         }
     }
-
 }

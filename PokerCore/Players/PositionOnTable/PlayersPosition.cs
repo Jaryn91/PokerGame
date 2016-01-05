@@ -8,35 +8,41 @@ namespace PokerCore.Players.PositionOnTable
 {
     public class PlayersPosition
     {
+        private readonly List<Player> _players;
 
-        public void SetStartPlayersPositions(List<Player> players)
+        public PlayersPosition(List<Player> players)
+        {
+            _players = players;
+        }
+
+        public void SetStartPlayersPositions()
         {           
-            var dealerPlayer = players.ElementAt(0);
+            var dealerPlayer = _players.ElementAt(0);
             dealerPlayer.Position = Position.Dealer;
-            SetBlindsPosition(players, dealerPlayer);
+            SetBlindsPosition(dealerPlayer);
         }
 
-        public void RandomPositionPlayers(List<Player> players)
+        public void RandomPositionPlayers()
         {
-            players.Shuffle();
+            _players.Shuffle();
         }
 
-        public void MoveDealerButton(List<Player> players)
+        public void MoveDealerButton()
         {
-            var dealerPlayer = GetDealer(players);
+            var dealerPlayer = GetDealer();
             dealerPlayer.Position = Position.None;
-            var nextDealerPlayer = players.NextOf(dealerPlayer);
+            var nextDealerPlayer = _players.NextOf(dealerPlayer);
             SetPlayerPosition(nextDealerPlayer, Position.Dealer);
-            SetBlindsPosition(players, nextDealerPlayer);
+            SetBlindsPosition(nextDealerPlayer);
         }
 
-        private void SetBlindsPosition(List<Player> players, Player dealerPlayer)
+        private void SetBlindsPosition(Player dealerPlayer)
         {
-            var nextSmallBlidPlayer = players.NextOf(dealerPlayer);
+            var nextSmallBlidPlayer = _players.NextOf(dealerPlayer);
             SetPlayerPosition(nextSmallBlidPlayer, Position.SmallBlind);
-            if (players.Count >= 3)
+            if (_players.Count >= 3)
             {
-                var nextBigBlindPlayer = players.NextOf(nextSmallBlidPlayer);
+                var nextBigBlindPlayer = _players.NextOf(nextSmallBlidPlayer);
                 SetPlayerPosition(nextBigBlindPlayer, Position.BigBlind);
             }
         }
@@ -46,19 +52,19 @@ namespace PokerCore.Players.PositionOnTable
             player.Position = position;
         }
 
-        public Player GetDealer(List<Player> players)
+        public Player GetDealer()
         {
-            return players.First(player => player.Position == Position.Dealer);
+            return _players.First(player => player.Position == Position.Dealer);
         }
 
-        public Player SmallBlindPlayer(List<Player> players)
+        public Player SmallBlindPlayer()
         {
-            return players.First(player => player.Position == Position.SmallBlind);
+            return _players.First(player => player.Position == Position.SmallBlind);
         }
 
-        public Player BigBlindPlayer(List<Player> players)
+        public Player BigBlindPlayer()
         {
-            return players.First(player => player.Position == Position.BigBlind);
+            return _players.First(player => player.Position == Position.BigBlind);
         }
     }
 }

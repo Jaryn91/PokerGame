@@ -8,20 +8,18 @@ using PokerCore.Table;
 
 namespace PokerCore.Dealing
 {
-    public class DealTurn : IDeal
+    public class DealTableCardsTurn : IDealTableCards
     {
-        private SingleTable _singleTable;
         private Deck _deck;
-        public DealTurn(SingleTable singleTable, Deck deck)
+        public DealTableCardsTurn(Deck deck)
         {
-            _singleTable = singleTable;
             _deck = deck;
         }
 
-        public void Deal()
+        public List<Card> Deal()
         {
-            var flopCards = GetTurnCardsFromDeck();
-            _singleTable.PutTurnOnTable(flopCards);
+            var turnCards = GetTurnCardsFromDeck();
+            return turnCards;
         }
 
         private List<Card> GetTurnCardsFromDeck()

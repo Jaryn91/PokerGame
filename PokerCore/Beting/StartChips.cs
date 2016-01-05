@@ -9,9 +9,16 @@ namespace PokerCore.Beting
 {
     public class StartChips
     {
-        public void SetToPlayers(List<Player> players)
+        private readonly List<Player> _players;
+
+        public StartChips(List<Player> players)
         {
-            foreach (var player in players)
+            _players = players;
+        }
+
+        public void SetToPlayers()
+        {
+            foreach (var player in _players)
             {
                 var chip = new Chips(PokerRules.StartChips);
                 player.SetStartChips(chip);

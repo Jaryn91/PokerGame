@@ -50,9 +50,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Beting.cs" />
     <Compile Include="CompareHandsTest.cs" />
     <Compile Include="DealingTest.cs" />
     <Compile Include="DeckTest.cs" />
+    <Compile Include="ExampleDate.cs" />
     <Compile Include="HandRankingTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SingleTableTest.cs" />

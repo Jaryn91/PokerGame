@@ -37,17 +37,19 @@ namespace PokerCoreTest
         [TestMethod]
         public void PutCardsOnTable()
         {
-            var table = new SingleTable();
+            var exampleDate = new ExampleDate();
+            var players = exampleDate.GetFourPlayers();
+            var blinds = exampleDate.GetStandardBlinds();
+            var blindsLevel = 1;
+            var playHand = new PlayHandOnTable(players, blinds, blindsLevel);
             var deck = new Deck();
             deck.Shuffle();
-            var dealFlop = new DealFlop(table, deck);
-            dealFlop.Deal();
-            var dealTurn = new DealTurn(table, deck);
-            dealTurn.Deal();
-            var dealRiver = new DealRiver(table, deck);
-            dealRiver.Deal();
+            
+            playHand.PutFlopOnTable();
+            playHand.PutTurnOnTable();
+            playHand.PutRiverOnTable();
 
-            var allCardsOnTable = table.TableCards.AllCards();
+            var allCardsOnTable = playHand.TableCards.AllCards();
             Assert.AreEqual(5, allCardsOnTable.Count);
             CollectionAssert.AllItemsAreUnique(allCardsOnTable);
         }

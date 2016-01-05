@@ -9,8 +9,8 @@ using PokerCore.DeckOfCards;
 namespace PokerCore.Dealing
 {
 
-    public interface IDeal
+    public interface IDealTableCards
     {
-        void Deal();
+        List<Card> Deal();
     }
 }
